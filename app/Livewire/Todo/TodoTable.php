@@ -4,6 +4,7 @@ namespace App\Livewire\Todo;
 
 use App\Models\Todo;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -11,15 +12,17 @@ class TodoTable extends Component
 {
     use WithPagination;
 
-    public $searchQuery = '';
+    #[Url()]
+    public $search = '';
+    #[Url()]
     public $showDeleted = false;
+    #[Url()]
     public $showFinished = false;
 
     #[On('searchQueryUpdated')]
-
-    public function updatedSearchQuery()
+    public function updatedSearchQuery($searchQuery)
     {
-        dd($this->search);
+        $this->search = $searchQuery;
     }
 
     public function render()
@@ -36,11 +39,11 @@ class TodoTable extends Component
                     // Default filter for non-deleted and non-finished TODO items
                     $query->where('finished', 0)
                         ->where(function ($subQuery) {
-                            $subQuery->where('todo', 'like', '%' . $this->searchQuery . '%')
-                                ->orWhere('description', 'like', '%' . $this->searchQuery . '%');
+                            $subQuery->where('todo', 'like', '%' . $this->search . '%')
+                                ->orWhere('description', 'like', '%' . $this->search . '%');
                         });
                 }
-            })->paginate(10),
+            })->paginate(8),
         ]);
     }
 }
