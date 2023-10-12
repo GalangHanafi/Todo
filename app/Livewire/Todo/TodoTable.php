@@ -15,9 +15,9 @@ class TodoTable extends Component
     #[Url()]
     public $search = '';
     #[Url()]
-    public $showDeleted = false;
+    public $deleted = false;
     #[Url()]
-    public $showFinished = false;
+    public $finished = false;
 
     #[On('searchQueryUpdated')]
     public function updatedSearchQuery($searchQuery)
@@ -29,10 +29,10 @@ class TodoTable extends Component
     {
         return view('livewire.todo.todo-table', [
             'todos' => Todo::where(function ($query) {
-                if ($this->showDeleted) {
+                if ($this->deleted) {
                     // Filter for deleted TODO items
                     $query->where('deleted', 1);
-                } elseif ($this->showFinished) {
+                } elseif ($this->finished) {
                     // Filter for finished TODO items
                     $query->where('finished', 1);
                 } else {

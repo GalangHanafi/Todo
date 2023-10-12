@@ -16,8 +16,8 @@ class TodoSeeder extends Seeder
     public function run(): void
     {
         $now = Carbon::now();
-        $aYearAgo = $now->subYear();
-        $aYearLater = $now->addYear();
+        $yearAfter = Carbon::now()->addYears(1);
+        $yearBefore = Carbon::now()->subYears(1);
 
         $finishedTodos = ['Finish 1', 'Finish 2', 'Finish 3', 'Finish 4', 'Finish 5',];
         $lateTodos = ['Late 1', 'Late 2', 'Late 3', 'Late 4', 'Late 5',];
@@ -37,7 +37,7 @@ class TodoSeeder extends Seeder
             Todo::create([
                 'todo' => $lateTodo,
                 'description' => Str::random(20),
-                'deadline' => $aYearAgo,
+                'deadline' => $yearBefore,
                 'finished' => 0,
                 'user_id' => 1,
             ]);
@@ -47,7 +47,7 @@ class TodoSeeder extends Seeder
             Todo::create([
                 'todo' => $todoTodo,
                 'description' => Str::random(20),
-                'deadline' => $aYearLater,
+                'deadline' => $yearAfter,
                 'finished' => 0,
                 'user_id' => 1,
             ]);

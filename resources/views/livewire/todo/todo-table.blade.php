@@ -12,7 +12,7 @@
         </thead>
         <tbody>
             @foreach ($todos as $todo)
-            <tr>
+            <tr wire:key="{{ $todo->id }}">
                 <th>
                     <label>
                         <input type="checkbox" class="checkbox" />
@@ -25,7 +25,7 @@
                     {{$todo->description}}
                 </td>
                 <td class="flex items-center space-x-4">
-                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                    @include('livewire.todo.includes.status')
                     <div>{{$todo->deadline}}</div>
                 </td>
                 <th>
