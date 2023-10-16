@@ -47,7 +47,7 @@ Before you begin, ensure you have met the following requirements:
 
 If you find this project useful, please consider giving it a star on GitHub to show your support!
 
-[![GitHub Repo](https://img.shields.io/github/stars/your-username/todo-app.svg?style=social)](https://github.com/GalangHanafi/Todo)
+[![GitHub Repo](https://img.shields.io/github/stars/GalangHanafi/Todo.svg?style=social)](https://github.com/GalangHanafi/Todo)
 
 <!-- ## Contributing
 
