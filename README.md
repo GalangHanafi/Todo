@@ -8,7 +8,7 @@ A simple Todo app built with Laravel Livewire, featuring user authentication, ta
 
 - User Authentication: Users can create an account and log in securely.
 - Task Management: 
-  - ~~Add~~, Edit, ~~and Delete~~ tasks effortlessly. (Note: In progress)
+  - ~~Add~~, ~~Edit~~, ~~and Delete~~ tasks effortlessly. (Note: In progress)
 - Task History: 
   - View ~~and restore deleted tasks~~. (Note: In progress)
 
@@ -17,7 +17,6 @@ A simple Todo app built with Laravel Livewire, featuring user authentication, ta
 - Laravel: A powerful PHP framework.
 - Livewire: A full-stack framework for Laravel that makes building dynamic interfaces simple.
 - MySQL: A popular relational database for storing task data.
-- Blade: The Laravel templating engine for building user interfaces.
 
 ## Requirements
 
@@ -48,7 +47,7 @@ Before you begin, ensure you have met the following requirements:
 
 If you find this project useful, please consider giving it a star on GitHub to show your support!
 
-[![GitHub Repo](https://img.shields.io/github/stars/your-username/todo-app.svg?style=social)](https://github.com/your-username/todo-app/stargazers)
+[![GitHub Repo](https://img.shields.io/github/stars/your-username/todo-app.svg?style=social)](https://github.com/GalangHanafi/Todo)
 
 <!-- ## Contributing
 
