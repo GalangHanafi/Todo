@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit="search">
-        <input wire:model='searchText' type="text" placeholder="Search Todo" class="input w-full max-w-xs" />
+    <form wire:submit="dispatchSearch">
+        <input wire:model.live.debounce.150ms='search' value="{{$search}}" type="text" placeholder="Search Todo" class="w-full max-w-xs input" />
     </form>
 </div>

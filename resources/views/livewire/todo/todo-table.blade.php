@@ -12,10 +12,10 @@
         </thead>
         <tbody>
             @foreach ($todos as $todo)
-            <tr wire:key="{{ $todo->id }}">
+            <tr wire:key="{{ $todo->id }}" class="{{($todo->finished == !null) ? 'italic line-through' : ''}}">
                 <th>
                     <label>
-                        <input type="checkbox" class="checkbox" />
+                        <input type="checkbox" class="checkbox" {{($todo->finished == !null) ? 'checked' : ''}}/>
                     </label>
                 </th>
                 <td>

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Livewire\Todo;
 
 use App\Models\Todo;
@@ -13,37 +12,62 @@ class TodoTable extends Component
     use WithPagination;
 
     #[Url()]
-    public $search = '';
+    public $search;
     #[Url()]
-    public $deleted = false;
+    public $deleted;
     #[Url()]
-    public $finished = false;
+    public $finished;
 
     #[On('searchQueryUpdated')]
-    public function updatedSearchQuery($searchQuery)
+    public function updatedSearchQuery($search)
     {
-        $this->search = $searchQuery;
+        $this->reset('deleted', 'finished');
+        $this->search = $search;
+    }
+
+    #[On('show-deleted')]
+    public function showDeleted()
+    {
+        $this->reset('finished', 'deleted');
+        $this->deleted = true;
+    }
+
+    #[On('show-finished')]
+    public function showFinished()
+    {
+        $this->reset('deleted', 'finished');
+        $this->finished = true;
+    }
+
+    #[On('clear-filter')]
+    public function clearFilter()
+    {
+        $this->reset();
     }
 
     public function render()
     {
+        $query = Todo::query();
+
+        if ($this->search) {
+            $query->where('todo', 'like', '%' . $this->search . '%')->orWhere('description', 'like', '%' . $this->search . '%');
+        }
+
+        if ($this->deleted) {
+            $query->onlyTrashed();
+        }
+
+        if ($this->finished) {
+            $query->whereNotNull('finished');
+        }
+
+        $todos = $query
+                    ->orderBy('finished', 'asc')
+                    ->orderBy('deadline')
+                    ->paginate(10);
+
         return view('livewire.todo.todo-table', [
-            'todos' => Todo::where(function ($query) {
-                if ($this->deleted) {
-                    // Filter for deleted TODO items
-                    $query->where('deleted', 1);
-                } elseif ($this->finished) {
-                    // Filter for finished TODO items
-                    $query->where('finished', 1);
-                } else {
-                    // Default filter for non-deleted and non-finished TODO items
-                    $query->where('finished', 0)
-                        ->where(function ($subQuery) {
-                            $subQuery->where('todo', 'like', '%' . $this->search . '%')
-                                ->orWhere('description', 'like', '%' . $this->search . '%');
-                        });
-                }
-            })->paginate(8),
+            'todos' => $todos,
         ]);
     }
 }

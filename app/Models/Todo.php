@@ -16,7 +16,8 @@ class Todo extends Model
         'description',
         'deadline',
         'finished',
-        'user_id'
+        'user_id',
+        'deleted_at',
     ];
 
     public function user(): BelongsTo

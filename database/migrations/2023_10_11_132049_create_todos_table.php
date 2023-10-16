@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('todo');
             $table->string('description');
             $table->date('deadline')->default(Carbon::now());
-            $table->boolean('finished')->default(0);
+            $table->date('finished')->nullable();
             $table->timestamps();
 
             $table->foreignId('user_id')->constrained();

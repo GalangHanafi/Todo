@@ -22,13 +22,14 @@ class TodoSeeder extends Seeder
         $finishedTodos = ['Finish 1', 'Finish 2', 'Finish 3', 'Finish 4', 'Finish 5',];
         $lateTodos = ['Late 1', 'Late 2', 'Late 3', 'Late 4', 'Late 5',];
         $todoTodos = ['Todo 1', 'Todo 2', 'Todo 3', 'Todo 4', 'Todo 5',];
+        $deletedTodos = ['Deleted 1', 'Deleted 2', 'Deleted 3', 'Deleted 4', 'Deleted 5',];
 
         foreach ($finishedTodos as $finishedTodo) {
             Todo::create([
                 'todo' => $finishedTodo,
                 'description' => Str::random(20),
                 'deadline' => $now,
-                'finished' => 1,
+                'finished' => $now,
                 'user_id' => 1,
             ]);
         }
@@ -38,7 +39,6 @@ class TodoSeeder extends Seeder
                 'todo' => $lateTodo,
                 'description' => Str::random(20),
                 'deadline' => $yearBefore,
-                'finished' => 0,
                 'user_id' => 1,
             ]);
         }
@@ -48,8 +48,17 @@ class TodoSeeder extends Seeder
                 'todo' => $todoTodo,
                 'description' => Str::random(20),
                 'deadline' => $yearAfter,
-                'finished' => 0,
                 'user_id' => 1,
+            ]);
+        }
+
+        foreach ($deletedTodos as $deletedTodo) {
+            Todo::create([
+                'todo' => $deletedTodo,
+                'description' => Str::random(20),
+                'deadline' => $now,
+                'user_id' => 1,
+                'deleted_at' => $now,
             ]);
         }
     }

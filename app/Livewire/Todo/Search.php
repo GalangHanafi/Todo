@@ -6,19 +6,11 @@ use Livewire\Component;
 
 class Search extends Component
 {
-    public $searchText = '';
-    public $searchQuery = '';
+    public $search;
 
-    // public function updatedSearchQuery()
-    // {
-    //     $this->dispatch('searchQueryUpdated', searchQuery: $this->searchQuery);
-    // }
-
-    public function search() {
-        $this->searchQuery = $this->searchText;
-        $this->dispatch('searchQueryUpdated', searchQuery: $this->searchQuery);
+    public function updatedSearch () {
+        $this->dispatch('searchQueryUpdated', search: $this->search);
     }
-
 
     public function render()
     {
