@@ -15,13 +15,13 @@ class Filter extends Component
 
         $this->dispatch('clear-filter');
     }
-    public function showDeleted()
-    {
-        $this->reset();
-        $this->deleted = true;
+    // public function showDeleted()
+    // {
+    //     $this->reset();
+    //     $this->deleted = true;
 
-        $this->dispatch('show-deleted');
-    }
+    //     $this->dispatch('show-deleted');
+    // }
     public function showFinished()
     {
         $this->reset();

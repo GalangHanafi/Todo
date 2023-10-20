@@ -12,7 +12,7 @@
         </thead>
         <tbody>
             @foreach ($todos as $todo)
-            <tr wire:key="{{ $todo->id }}" class="{{($todo->finished == !null) ? 'italic line-through' : ''}}">
+            <tr wire:key="{{ $todo->id }}" class="{{($todo->finished == !null) ? 'italic' : ''}}">
                 <th>
                     <label>
                         <input type="checkbox" class="checkbox" {{($todo->finished == !null) ? 'checked' : ''}}/>
@@ -28,9 +28,15 @@
                     @include('livewire.todo.includes.status')
                     <div>{{$todo->deadline}}</div>
                 </td>
-                <th>
-                    <button class="btn btn-ghost btn-xs">details</button>
-                </th>
+                <td class="no-underline">
+                    <button class="btn btn-ghost btn-sm">
+                        <div class="text-xl">📝</div>
+                    </button>
+                    <button class="btn btn-ghost btn-sm" wire:click='delete({{ $todo->id }})'
+                        wire:confirm='Are you sure you want to delete this todo?'>
+                        <div class="text-xl">🗑</div>
+                    </button>
+                </td>
             </tr>
             @endforeach
         </tbody>
