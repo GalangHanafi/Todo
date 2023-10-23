@@ -43,6 +43,10 @@ Before you begin, ensure you have met the following requirements:
 9. Start the Node development: `npm run dev`
 10. Start the development server: `php artisan serve`
 
+## Test User
+Email   : `test@test.com`
+Password: `123`
+
 ## Star the Repository
 
 If you find this project useful, please consider giving it a star on GitHub to show your support!

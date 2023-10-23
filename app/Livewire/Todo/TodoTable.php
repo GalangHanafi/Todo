@@ -53,10 +53,13 @@ class TodoTable extends Component
 
     public function render()
     {
-        $query = Todo::query();
+        $userId = auth()->user()->id;
+
+        $query = Todo::query()->where('user_id', $userId);
 
         if ($this->search) {
-            $query->where('todo', 'like', '%' . $this->search . '%')->orWhere('description', 'like', '%' . $this->search . '%');
+            $query->where('todo', 'like', '%' . $this->search . '%')
+                ->orWhere('description', 'like', '%' . $this->search . '%');
         }
 
         // if ($this->deleted) {

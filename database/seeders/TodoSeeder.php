@@ -61,5 +61,15 @@ class TodoSeeder extends Seeder
                 'deleted_at' => $now,
             ]);
         }
+
+        foreach ($finishedTodos as $finishedTodo) {
+            Todo::create([
+                'todo' => $finishedTodo,
+                'description' => Str::random(20),
+                'deadline' => $now,
+                'finished' => $now,
+                'user_id' => 2,
+            ]);
+        }
     }
 }

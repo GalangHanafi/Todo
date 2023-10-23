@@ -20,5 +20,11 @@ class UserSeeder extends Seeder
             'password' => '123',
             'email_verified_at' => Carbon::now()->tz,
         ]);
+        User::create([
+            'name' => 'test2',
+            'email' => 'test2@test.com',
+            'password' => '123',
+            'email_verified_at' => Carbon::now()->tz,
+        ]);
     }
 }
