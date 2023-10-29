@@ -21,12 +21,9 @@ class MakeTodo extends Component
     {
         if (auth()->check()) {
             $userId = auth()->user()->id;
-            // $userId now contains the ID of the currently authenticated user
         }
 
         $this->validate();
-        // $arr = array('Todo' => $this->todo, 'desc' => $this->description, 'deadline' => $this->deadline);
-        // dd($arr);
 
         Todo::create([
             'todo' => $this->todo,

@@ -28,14 +28,10 @@
                     @include('livewire.todo.includes.status')
                     <div>{{$todo->deadline}}</div>
                 </td>
-                <td class="no-underline">
-                    <button class="btn btn-ghost btn-sm">
-                        <div class="text-xl">📝</div>
-                    </button>
-                    <button class="btn btn-ghost btn-sm" wire:click='delete({{ $todo->id }})'
-                        wire:confirm='Are you sure you want to delete this todo?'>
-                        <div class="text-xl">🗑</div>
-                    </button>
+                <td class="w-0"></td>
+                <td class="flex no-underline">
+                    @include('livewire.todo.includes.edit-todo')
+                    @include('livewire.todo.includes.delete-todo')
                 </td>
             </tr>
             @endforeach

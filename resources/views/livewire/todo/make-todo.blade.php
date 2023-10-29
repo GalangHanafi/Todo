@@ -27,7 +27,7 @@
                 <input wire:model='deadline' type="date" class="w-full input input-bordered" />
                 @error('deadline') <span class="text-error label-text-alt">{{$message}}</span> @enderror
                 <div class="flex justify-end space-x-2 modal-action">
-                    <label for="make_todo_modal" class="btn btn-outline btn-warning">Cancel</label>
+                    <label for="make_todo_modal" class="btn btn-outline btn-error">Cancel</label>
                     <button class="btn btn-primary"> Create </button>
                 </div>
             </form>

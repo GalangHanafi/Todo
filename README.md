@@ -28,7 +28,7 @@ Before you begin, ensure you have met the following requirements:
 
 - **Database**: MySQL, PostgreSQL, SQLite, and SQL Server. You will need to update your `.env` file with the necessary database connection information.
 
-- **Node.js and npm**: If you plan to compile and manage front-end assets using Laravel Mix, you will need Node.js and npm. You can download Node.js from [nodejs.org](https://nodejs.org/).
+- **Node.js and npm**
 
 ## Installation
 
