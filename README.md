@@ -8,9 +8,11 @@ A simple Todo app built with Laravel Livewire, featuring user authentication, ta
 
 - User Authentication: Users can create an account and log in securely.
 - Task Management:
-  - ~~Add~~, ~~Edit~~, ~~and Delete~~ tasks effortlessly. (Note: In progress)
+  - Add ✅
+  - Edit ✅
+  - Delete ✅
 - Task History:
-  - View ~~and restore deleted tasks~~. (Note: In progress)
+  - View and restore deleted tasks. ❌
 
 ## Technologies Used
 
