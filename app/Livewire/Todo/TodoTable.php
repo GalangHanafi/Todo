@@ -97,6 +97,7 @@ class TodoTable extends Component
             ->orderBy('deadline')
             ->paginate(10);
 
+        // dd($todos->first());
         return view('livewire.todo.todo-table', [
             'todos' => $todos,
         ]);

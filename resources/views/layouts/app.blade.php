@@ -20,9 +20,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-neutral-focus">
-        <livewire:layout.navigation />
+<body class="font-sans antialiased bg-neutral">
+    <div class="min-h-screen bg-neutral">
+        <div class="bg-neutral-focus">
+            <livewire:layout.navigation />
+        </div>
 
         <!-- Page Heading -->
         {{-- @if (isset($header))
@@ -34,7 +36,7 @@
         @endif --}}
 
         <!-- Page Content -->
-        <main class="bg-neutral">
+        <main>
             {{ $slot }}
         </main>
     </div>

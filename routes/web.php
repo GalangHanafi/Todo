@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/', '/todo');
+Route::redirect('/dashboard', '/todo');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/deleted', 'deleted')->name('deleted');
