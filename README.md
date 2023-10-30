@@ -6,7 +6,9 @@ A simple Todo app built with Laravel Livewire, featuring user authentication, ta
 
 ## Features
 
-- User Authentication: Users can create an account and log in securely.
+- User Authentication:
+  - Register. ✅
+  - Login. ✅
 - Task Management:
   - Add. ✅
   - Edit. ✅
@@ -33,7 +35,7 @@ Before you begin, ensure you have met the following requirements:
 
 - **Database**: MySQL, PostgreSQL, SQLite, and SQL Server. You will need to update your `.env` file with the necessary database connection information.
 
-- **Node.js and npm**
+- **Node.js**: 16.19.0 or higher.
 
 ## Installation
 
