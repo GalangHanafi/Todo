@@ -32,9 +32,9 @@
                         <div>{{$todo->deadline}}</div>
                     </td>
                     <td class="w-0"></td>
-                    <td class="flex not-italic">
-                        @include('livewire.todo.includes.edit-todo')
-                        @include('livewire.todo.includes.delete-todo')
+                    <td class="flex no-underline">
+                        @include('livewire.deleted.includes.restore')
+                        @include('livewire.deleted.includes.delete-todo')
                     </td>
                 </tr>
                 @endforeach
@@ -51,6 +51,6 @@
     </x-todo-null>
 
     @else
-    <x-todo-null>Lets fill this up!</x-todo-null>
+    <x-todo-null>No deleted items found.</x-todo-null>
     @endif
 </div>

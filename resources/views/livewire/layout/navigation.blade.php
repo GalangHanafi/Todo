@@ -44,9 +44,9 @@ new class extends Component
                     ? "active" : "" }}">Deleted Todo</a></li>
         </ul>
     </div>
-    <div class="flex space-x-2 navbar-end">
+    <div class="flex space-x-1 navbar-end">
         <div class="dropdown dropdown-end">
-            <label tabindex="0" class="m-1 normal-case btn btn-ghost">{{ auth()->user()->name }}
+            <label tabindex="0" class="normal-case btn btn-ghost">{{ auth()->user()->name }}
                 <span>
                     <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"

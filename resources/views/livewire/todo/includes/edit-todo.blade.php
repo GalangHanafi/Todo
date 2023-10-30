@@ -1,12 +1,18 @@
 <div>
-    <label id="edit{{$todo->id}}" for="edit_todo_modal_{{$todo->id}}" class="btn btn-ghost"
-        wire:click='updateModal({{$todo}})'>📝</label>
+    <div class="tooltip" data-tip="Edit">
+        <label id="edit{{$todo->id}}" for="edit_todo_modal_{{$todo->id}}" class="btn btn-ghost"
+            wire:click='updateModal({{$todo}})' wire:loading.class="btn-disabled">
+            📝
+        </label>
+    </div>
+    {{-- <label id="edit{{$todo->id}}" for="edit_todo_modal_{{$todo->id}}" class="btn btn-ghost"
+        wire:click='updateModal({{$todo}})'>📝</label> --}}
     <input id="edit_todo_modal_{{$todo->id}}" type="checkbox" class="modal-toggle" />
     <div class="modal">
         <div class="modal-box">
             <h3 class="text-lg font-bold">edit todo</h3>
             <br>
-            <form wire:submit='update({{$todo->id}})' class="w-full form-control" >
+            <form wire:submit='update({{$todo->id}})' class="w-full form-control">
                 <label class="label" for="todo{{$todo->id}}">
                     <span class="label-text">Todo</span>
                 </label>

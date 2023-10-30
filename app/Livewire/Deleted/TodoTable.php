@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Todo;
+namespace App\Livewire\Deleted;
 
 use App\Models\Todo;
 use App\Models\User;
@@ -8,7 +8,6 @@ use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Livewire\Attributes\Rule;
 
 class TodoTable extends Component
 {
@@ -42,42 +41,33 @@ class TodoTable extends Component
         $this->reset();
     }
 
-    public function updateModal($todo)
-    {
-        $this->id = $todo['id'];
-        $this->todo = $todo['todo'];
-        $this->description = $todo['id'];
-        $this->deadline = $todo['deadline'];
-    }
-
-    public function update()
-    {
-        Todo::where('id', $this->id)
-            ->update([
-                'id' => $this->id,
-                'todo' => $this->todo,
-                'description' => $this->description,
-                'deadline' => $this->deadline,
-            ]);
-    }
-
     public function delete($id)
     {
-        Todo::destroy($id);
+        $todo = Todo::query();
+        $todo->where('id', $id)
+            ->forceDelete();
+    }
+
+    public function restore($id)
+    {
+        $todo = Todo::query();
+        $todo->where('id', $id)
+            ->restore();
     }
 
     public function render()
     {
         $userId = auth()->user()->id;
 
-        $query = User::find($userId)->todos();
+        $query = User::find($userId)->todos()->onlyTrashed();
         if ($this->search) {
             $query->where('todo', 'like', '%' . $this->search . '%')
-                ->orWhere('description', 'like', '%' . $this->search . '%');
+                ->orWhere('description', 'like', '%' . $this->search . '%')
+                ->onlyTrashed();
         }
 
         if ($this->finished) {
-            $query->whereNotNull('finished');
+            $query->whereNotNull('finished')->onlyTrashed();
         }
 
         $todos = $query
@@ -86,7 +76,7 @@ class TodoTable extends Component
             ->paginate(10);
 
         // dd($todos->first());
-        return view('livewire.todo.todo-table', [
+        return view('livewire.deleted.todo-table', [
             'todos' => $todos,
         ]);
     }

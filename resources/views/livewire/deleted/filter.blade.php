@@ -5,5 +5,7 @@
                 class="w-3 h-3 radio" /><span>All</span></div>
         <div class="flex items-center space-x-2"><input wire:click='showFinished' type="radio" name="todo-filter"
                 class="w-3 h-3 radio" /><span>Finished</span></div>
+        {{-- <div class="flex items-center space-x-2"><input wire:click='showDeleted' type="radio" name="todo-filter"
+                class="w-3 h-3 radio" /><span>Deleted</span></div> --}}
     </ul>
 </div>
