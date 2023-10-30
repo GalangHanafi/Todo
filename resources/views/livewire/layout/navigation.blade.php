@@ -25,16 +25,23 @@ new class extends Component
                 </svg>
             </label>
             <ul tabindex="0" class="font-semibold menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52">
-                <li><a href="{{ route('todo') }}" wire:navigate>Todo</a></li>
-                <li><a href="{{ route('deleted') }}" wire:navigate>Deleted Todo</a></li>
+                <li><a href="{{ route('todo') }}" wire:navigate class="{{\Request::route()->getName() == "todo"
+                        ? "active" : "" }}">Todo</a></li>
+                <li><a href="{{ route('deleted') }}" wire:navigate class="{{\Request::route()->getName() == "deleted"
+                        ? "active" : "" }}">Deleted Todo</a></li>
             </ul>
         </div>
-        <a class="text-xl normal-case btn btn-ghost">daisyUI</a>
+        <a href="{{ route('todo') }}" wire:navigate class="flex items-center space-x-2 prose">
+            <img src="{{asset('images/logo-todo.png')}}" alt="Image by catalyststuff" class="w-16">
+            <div class="text-3xl font-bold normal-case">Todo App</div>
+        </a>
     </div>
     <div class="hidden navbar-center lg:flex">
         <ul class="px-1 font-semibold menu menu-horizontal">
-            <li><a href="{{ route('todo') }}" wire:navigate>Todo</a></li>
-            <li><a href="{{ route('deleted') }}" wire:navigate>Deleted Todo</a></li>
+            <li><a href="{{ route('todo') }}" wire:navigate class="{{\Request::route()->getName() == "todo" ? "active"
+                    : "" }}">Todo</a></li>
+            <li><a href="{{ route('deleted') }}" wire:navigate class="{{\Request::route()->getName() == "deleted"
+                    ? "active" : "" }}">Deleted Todo</a></li>
         </ul>
     </div>
     <div class="flex space-x-2 navbar-end">
@@ -49,7 +56,8 @@ new class extends Component
                 </span>
             </label>
             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                <li><a href="{{route('profile')}}" wire:navigate>Profile</a></li>
+                <li><a href="{{route('profile')}}" wire:navigate class="{{\Request::route()->getName() == "profile"
+                        ? "active" : "" }}">Profile</a></li>
                 <li><a wire:click="logout" class="text-error hover:text-error">Logout</a></li>
             </ul>
         </div>
